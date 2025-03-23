@@ -37,7 +37,7 @@
   color: rgb(255, 255, 255);
   opacity: 0.5;
   font-size: 13px;
-  font-weight: 400;
+  font-family: var(--font-inter-regular);
   line-height: 16px;
   width: 100%;
   margin: 0;

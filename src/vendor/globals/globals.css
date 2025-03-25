@@ -3,6 +3,7 @@
 :root {
   --background-dark: black;
   --color-ligth: white;
+  --color-text-secondary: rgb(255, 255, 255);
   --color-text-black: black;
   --error-color: #862308;
   --font-inter-regular: 'Inter-regular', "Arial", sans-serif;

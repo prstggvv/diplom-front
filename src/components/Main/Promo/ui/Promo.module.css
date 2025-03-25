@@ -2,6 +2,7 @@
   background-color: #2F4F4F;
   width: 100%;
   margin: 0;
+  min-height: 90vh;
 }
 
 .container {
@@ -34,7 +35,7 @@
 }
 
 .subtitle {
-  color: rgb(255, 255, 255);
+  color: var(--color-text-secondary);
   opacity: 0.5;
   font-size: 13px;
   font-family: var(--font-inter-regular);

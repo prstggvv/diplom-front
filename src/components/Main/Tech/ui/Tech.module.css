@@ -1,0 +1,61 @@
+.section {
+  width: 100%;
+  margin: 0;
+  background-color: rgb(32, 32, 32);
+  min-height: 100vh;
+}
+
+.container {
+  width: 89.0625%;
+  padding-top: 100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  gap: 50px;
+  align-items: center;
+}
+
+.title {
+  font-size: 40px;
+  font-family: var(--font-inter-medium);
+  color: var(--color-ligth);
+  line-height: 58px;
+  letter-spacing: -0.04em;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.card {
+  width: 90px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgb(48, 48, 48);
+}
+
+.svg {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.heading {
+  font-size: 14px;
+  font-family: var(--font-inter-regular);
+  line-height: 17px;
+  color: var(--color-text-secondary);
+  letter-spacing: -0.04em;
+  margin: 0;
+  padding: 0;
+}

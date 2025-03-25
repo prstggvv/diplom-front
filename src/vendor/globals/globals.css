@@ -4,6 +4,10 @@
   --background-dark: black;
   --color-ligth: white;
   --color-text-secondary: rgb(255, 255, 255);
+  --grey-secondary-light: #a3a3a3;
+  --light-grey-primary: #f1f1f1;
+  --navbar-bg-color: #000;
+  --grey-secondary: #525252;
   --color-text-black: black;
   --error-color: #862308;
   --font-inter-regular: 'Inter-regular', "Arial", sans-serif;

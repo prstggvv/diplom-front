@@ -1,6 +1,7 @@
 import { classNames } from '../../../utils/classNames/classNames';
 import cls from './Header.module.css';
 import LogoSvg from '../../../assets/images/icons/logo.svg';
+import { Link } from 'react-router-dom';
 
 interface IHeaderData {
   className?: string;
@@ -17,7 +18,7 @@ export const Header = ({ className }: IHeaderData) => {
         />
         <nav className={classNames(cls.nav, {}, [])}>
           <a href='#' className={classNames(cls.link, {}, [cls.up])}>Регистрация</a>
-          <a href='#' className={classNames(cls.link, {}, [cls.in])}>Войти</a>
+          <Link to='/signin' className={classNames(cls.link, {}, [cls.in])}>Войти</Link>
         </nav>
       </div>
     </header>

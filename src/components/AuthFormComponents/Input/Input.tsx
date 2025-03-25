@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, forwardRef } from 'react';
+import { ChangeEvent, FC } from 'react';
 import { classNames } from '../../../utils/classNames/classNames';
 import cls from './Input.module.css';
 
@@ -15,7 +15,7 @@ interface InputProps {
   icon?: string;
 }
 
-export const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(({
+export const Input: FC<InputProps> = (({
   className,
   type,
   placeholder,

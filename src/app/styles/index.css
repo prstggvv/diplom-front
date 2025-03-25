@@ -1,5 +1,5 @@
-@import url('./vendor/reset.css');
-@import url('./vendor/globals/globals.css');
+@import url('./reset.css');
+@import url('./globals/globals.css');
 
 .app {
   background-color: black;

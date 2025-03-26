@@ -1,0 +1,1 @@
+export { RegisterPageAsync as Register } from './ui/RegisterPage.async';

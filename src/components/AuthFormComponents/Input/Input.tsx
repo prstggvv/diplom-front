@@ -1,6 +1,8 @@
-import { ChangeEvent, FC } from 'react';
+import { ChangeEvent, FC, forwardRef } from 'react';
 import { classNames } from '../../../utils/classNames/classNames';
 import cls from './Input.module.css';
+import HideIconSvg from '../../../assets/images/icons/auth/hide_icon.svg';
+import ShowIconSvg from '../../../assets/images/icons/auth/show_icon.svg';
 
 interface InputProps {
   className?: string;
@@ -9,13 +11,14 @@ interface InputProps {
   onChange: (evt: ChangeEvent<HTMLInputElement>) => void;
   value: string;
   name: string;
+  ref?: any;
   error: boolean;
   errorText: string;
   onIconClick?: () => void;
   icon?: string;
 }
 
-export const Input: FC<InputProps> = (({
+export const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(({
   className,
   type,
   placeholder,
@@ -24,7 +27,9 @@ export const Input: FC<InputProps> = (({
   name,
   error,
   errorText,
-}) => {
+  onIconClick,
+  icon,
+}, ref) => {
   return (
     <label className={classNames(cls.label, {}, [className || ''])}>
       <input
@@ -34,8 +39,25 @@ export const Input: FC<InputProps> = (({
         onChange={onChange}
         value={value}
         name={name}
+        ref={ref}
       />
       {error && <span className={classNames(cls.errorText, {}, [])}>{errorText}</span>}
+      {name === 'password' && value && icon === 'HideIcon' && (
+        <img 
+          className={classNames(cls.svg, {}, [])}
+          alt='иконка закрытого глаза'
+          src={HideIconSvg}
+          onClick={onIconClick}
+        />
+      )}
+      {name === 'password' && value && icon === 'ShowIcon' && (
+        <img
+          className={classNames(cls.svg, {}, [])}
+          alt='иконка закрытого глаза'
+          src={ShowIconSvg}
+          onClick={onIconClick}
+        />
+      )}
     </label>
   );
 });

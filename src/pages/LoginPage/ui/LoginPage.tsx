@@ -4,7 +4,7 @@ import { Input } from '../../../components/AuthFormComponents/Input/Input';
 import { Button } from '../../../components/AuthFormComponents/Button/Button';
 import { Form } from '../../../components/AuthFormComponents/Form';
 import { useValidation } from '../../../hooks/useValidation';
-import { FormEvent, ChangeEvent } from 'react';
+import { FormEvent, ChangeEvent, createRef, useState } from 'react';
 
 interface ILoginPageData {
   className?: string;
@@ -17,6 +17,22 @@ const LoginPage = ({ className }: ILoginPageData) => {
     isValid,
     handleChange,
   } = useValidation({});
+  const passwordRef = createRef<HTMLInputElement>();
+  const [passwordIcon, setPasswordIcon] = useState<'HideIcon' | 'ShowIcon'>('HideIcon');
+  const [passwordType, setPasswordType] = useState<'text' | 'password'>('password');
+
+  const handleClickIcon = () => {
+    if (passwordRef.current.type === 'password') {
+      setPasswordType('text');
+      setPasswordIcon('ShowIcon');
+      passwordRef.current?.focus();
+    } else {
+      setPasswordType('password');
+      setPasswordIcon('HideIcon');
+      passwordRef.current?.focus();
+    }
+  }
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   }
@@ -51,13 +67,16 @@ const LoginPage = ({ className }: ILoginPageData) => {
             errorText={errors.email || ''}
           />
           <Input 
-            type='password'
+            type={passwordType}
             placeholder='Пароль'
             onChange={(e: ChangeEvent<HTMLInputElement>) => handleChange(e)}
             value={values.password || ''}
             name='password'
             error={Object.prototype.hasOwnProperty.call(errors, 'password')}
             errorText={errors.password || ''}
+            ref={passwordRef}
+            onIconClick={handleClickIcon}
+            icon={passwordIcon}
           />
           <Button
             type='submit'

@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, forwardRef } from 'react';
+import { ChangeEvent, FC, ForwardedRef, forwardRef } from 'react';
 import { classNames } from '../../../utils/classNames/classNames';
 import cls from './Input.module.css';
 import HideIconSvg from '../../../assets/images/icons/auth/hide_icon.svg';
@@ -11,7 +11,7 @@ interface InputProps {
   onChange: (evt: ChangeEvent<HTMLInputElement>) => void;
   value: string;
   name: string;
-  ref?: any;
+  ref?: ForwardedRef<HTMLInputElement>;
   error: boolean;
   errorText: string;
   onIconClick?: () => void;

@@ -17,7 +17,7 @@ export const Header = ({ className }: IHeaderData) => {
           src={LogoSvg}
         />
         <nav className={classNames(cls.nav, {}, [])}>
-          <a href='#' className={classNames(cls.link, {}, [cls.up])}>Регистрация</a>
+          <Link to='/signup' className={classNames(cls.link, {}, [cls.up])}>Регистрация</Link>
           <Link to='/signin' className={classNames(cls.link, {}, [cls.in])}>Войти</Link>
         </nav>
       </div>

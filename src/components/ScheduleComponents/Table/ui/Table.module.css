@@ -1,0 +1,62 @@
+.section {
+  width: 100%;
+  margin: 0;
+  background-color: rgb(32, 32, 32);
+  min-height: 100vh;
+}
+
+.container {
+  padding-top: 100px;
+  width: 89.0625%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.table {
+  width: 100%;
+  margin: 0 auto;
+  border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.cell {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  position: relative;
+}
+
+.header {
+  background-color: #55608f;
+  text-align: left;
+}
+
+.row:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.fullCell:hover::before,
+.fullCell:hover::after {
+  content: "";
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: -1;
+}
+
+.fullCell:hover::before {
+  top: 0;
+  bottom: 0;
+  left: -5000px;
+  right: -5000px;
+}
+
+.fullCell:hover::after {
+  left: 0;
+  right: 0;
+  top: -5000px;
+  bottom: -5000px;
+}

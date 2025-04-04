@@ -31,7 +31,7 @@ export const Front = ({ className }: IFrontData) => {
           })}
         </ul>
         <div className={classNames(cls.landing, {}, [])}>
-          <h4 className={classNames(cls.time, {}, [])}>1 неделя</h4>
+          <h4 className={classNames(cls.time, {}, [])}>5 неделя</h4>
           <p className={classNames(cls.description, {}, [])}>backend</p>
           <h4 className={classNames(cls.time, {}, [cls.dark])}>4 недели</h4>
           <p className={classNames(cls.description, {}, [cls.dark])}>frontend</p>

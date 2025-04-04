@@ -27,7 +27,8 @@ export const Form = ({
   return (
     <form 
       className={classNames(cls.form, {}, [className || ''])}
-      onSubmit={onSubmit}  
+      onSubmit={onSubmit}
+      noValidate
     >
       <div className={classNames(cls.container, {}, [])}>
         <img 

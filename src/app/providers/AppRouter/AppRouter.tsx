@@ -3,6 +3,7 @@ import { Header } from "../../../components/Header";
 import Main from "../../../components/Main/Main";
 import { Login } from "../../../pages/LoginPage";
 import { Register } from "../../../pages/RegisterPage";
+import { Schedule } from "../../../pages/SchedulePage";
 
 const AppRouter = () => {
   return (
@@ -19,6 +20,9 @@ const AppRouter = () => {
         } />
         <Route path='/signup' element={
           <Register />
+        } />
+        <Route path='/schedule' element={
+          <Schedule />
         } />
       </Routes>
     </>

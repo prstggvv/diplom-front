@@ -1,0 +1,49 @@
+.section {
+  width: 100%;
+  margin: 0;
+}
+
+.container {
+  width: 89.0625%;
+  margin: 0 auto;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;;
+  list-style: none;
+  gap: 10px;
+  padding: 0 0 50px 0;
+}
+
+.card {
+  max-width: 750px;
+  width: 100%;
+  border: 1px solid white;
+  border-radius: 3px;
+  padding: 30px;
+}
+
+.heading {
+  text-align: start;
+  font-family: var(--font-inter-regular);
+  color: var(--color-ligth);
+  font-size: 20px;
+  margin: 0;
+}
+
+.teacher {
+  text-align: start;
+  font-family: var(--font-inter-regular);
+  color: var(--color-ligth);
+  font-size: 20px;
+  margin: 0;
+}

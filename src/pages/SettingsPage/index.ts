@@ -1,0 +1,1 @@
+export { SettingsPageAsync as Settings } from './ui/SettingsPage.async';

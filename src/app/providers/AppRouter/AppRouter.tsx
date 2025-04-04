@@ -4,6 +4,7 @@ import Main from "../../../components/Main/Main";
 import { Login } from "../../../pages/LoginPage";
 import { Register } from "../../../pages/RegisterPage";
 import { Schedule } from "../../../pages/SchedulePage";
+import { Settings } from "../../../pages/SettingsPage";
 
 const AppRouter = () => {
   return (
@@ -23,6 +24,9 @@ const AppRouter = () => {
         } />
         <Route path='/schedule' element={
           <Schedule />
+        } />
+        <Route path='/settings' element={
+          <Settings />
         } />
       </Routes>
     </>

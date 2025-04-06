@@ -4,6 +4,7 @@ import { Popup } from '../../../components/SettingsComponents/Popup';
 import { SettingsHeader } from '../../../components/SettingsComponents/SettingsHeader';
 import { classNames } from '../../../utils/classNames/classNames';
 import cls from './SettingsPage.module.css';
+import { ButtonComplete } from '../../../components/SettingsComponents/ButtonComplete';
 
 interface ISettingsPageData {
   className?: string;
@@ -33,6 +34,7 @@ const SettingsPage = ({ className }: ISettingsPageData) => {
           onOpen={handleOpenPopup}
         />
         <Cards />
+        <ButtonComplete />
       </div>
     </main>
   );

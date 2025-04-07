@@ -51,3 +51,10 @@
 .link:hover {
   opacity: .7;
 }
+
+@media screen and (max-width: 463px) {
+  .form {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}

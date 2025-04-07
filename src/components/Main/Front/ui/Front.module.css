@@ -117,3 +117,14 @@
 .description.dark {
   grid-area: descrtwo;
 }
+
+@media screen and (max-width: 802px) {
+  .list {
+    flex-direction: column;
+  }
+
+  .card {
+    max-width: 100%;
+    width: 100%;
+  }
+}

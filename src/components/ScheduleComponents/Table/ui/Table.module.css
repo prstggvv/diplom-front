@@ -16,6 +16,7 @@
 }
 
 .table {
+  border: 3px solid white;
   width: 100%;
   margin: 0 auto;
   border-collapse: collapse;
@@ -24,19 +25,24 @@
 }
 
 .cell {
+  border: 3px solid white;
+  font-family: var(--font-inter-regular);
+  margin: 0;
   padding: 15px;
-  background-color: rgba(255, 255, 255, 0.2);
   color: #fff;
   position: relative;
 }
 
 .header {
-  background-color: #55608f;
-  text-align: left;
+  text-align: center;
 }
 
 .row:hover {
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+.fullCell {
+  height: 98px;
 }
 
 .fullCell:hover::before,

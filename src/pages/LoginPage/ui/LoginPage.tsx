@@ -3,7 +3,7 @@ import cls from './LoginPage.module.css';
 import { Input } from '../../../components/AuthFormComponents/Input/Input';
 import { Button } from '../../../components/AuthFormComponents/Button/Button';
 import { Form } from '../../../components/AuthFormComponents/Form';
-import { useValidation } from '../../../hooks/useValidation';
+import { useValidation } from '../../../shared/hooks/useValidation';
 import { FormEvent, ChangeEvent, createRef, useState } from 'react';
 
 interface ILoginPageData {

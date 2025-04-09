@@ -1,6 +1,6 @@
 import { classNames } from '../../../utils/classNames/classNames';
 import cls from './RegisterPage.module.css';
-import { useValidation } from '../../../hooks/useValidation';
+import { useValidation } from '../../../shared/hooks/useValidation';
 import { ChangeEvent, FormEvent } from 'react';
 import { Form } from '../../../components/AuthFormComponents/Form';
 import { Input } from '../../../components/AuthFormComponents/Input/Input';

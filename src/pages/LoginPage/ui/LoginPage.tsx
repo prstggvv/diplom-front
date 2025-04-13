@@ -8,9 +8,10 @@ import { FormEvent, ChangeEvent, createRef, useState } from 'react';
 
 interface ILoginPageData {
   className?: string;
+  handleLogin: (email: string, password: string) => void;
 }
 
-const LoginPage = ({ className }: ILoginPageData) => {
+const LoginPage = ({ className, handleLogin }: ILoginPageData) => {
   const {
     values,
     errors,
@@ -35,6 +36,8 @@ const LoginPage = ({ className }: ILoginPageData) => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    handleLogin(values.email, values.password);
   }
 
   return (
@@ -47,16 +50,6 @@ const LoginPage = ({ className }: ILoginPageData) => {
           subtitle='Ещё не зарегистрированы?'
           auth='Регистрация'
         >
-          <Input 
-            type='text'
-            placeholder='Имя'
-            onChange={(e: ChangeEvent<HTMLInputElement>) => handleChange(e)}
-            value={values.name || ''}
-            name='name'
-            error={Object.prototype.hasOwnProperty.call(errors, 'name')}
-            errorText={errors.name || ''}
-            className={classNames(cls.input, {}, [])}
-          />
           <Input
             type='email'
             placeholder='E-mail'

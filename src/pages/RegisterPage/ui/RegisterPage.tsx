@@ -8,9 +8,12 @@ import { Button } from '../../../components/AuthFormComponents/Button/Button';
 
 interface IRegisterPageData {
   className?: string;
+  handleRegister: (
+    name: string, email: string, password: string
+  ) => void;
 }
 
-const RegisterPage = ({ className }: IRegisterPageData) => {
+const RegisterPage = ({ className, handleRegister }: IRegisterPageData) => {
   const {
     isValid,
     handleChange,
@@ -20,6 +23,8 @@ const RegisterPage = ({ className }: IRegisterPageData) => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    handleRegister(values.email, values.name, values.password);
   }
 
   return (
@@ -32,6 +37,16 @@ const RegisterPage = ({ className }: IRegisterPageData) => {
           subtitle='Уже есть аккаунт?'
           auth='Войти'
         >
+          <Input 
+            type='text'
+            placeholder='Имя'
+            onChange={(e: ChangeEvent<HTMLInputElement>) => handleChange(e)}
+            value={values.name || ''}
+            name='name'
+            error={Object.prototype.hasOwnProperty.call(errors, 'name')}
+            errorText={errors.name || ''}
+            className={classNames(cls.input, {}, [])}
+          />
           <Input
             type='email'
             placeholder='E-mail'
@@ -40,7 +55,6 @@ const RegisterPage = ({ className }: IRegisterPageData) => {
             name='email'
             error={Object.prototype.hasOwnProperty.call(errors, 'email')}
             errorText={errors.email || ''}
-            className={classNames(cls.input, {}, [])}
           />
           <Input
             type='password'

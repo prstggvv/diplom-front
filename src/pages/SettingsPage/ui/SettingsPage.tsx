@@ -5,7 +5,6 @@ import { SettingsHeader } from '../../../components/SettingsComponents/SettingsH
 import { classNames } from '../../../utils/classNames/classNames';
 import cls from './SettingsPage.module.css';
 import { ButtonComplete } from '../../../components/SettingsComponents/ButtonComplete';
-import { Header } from '../../../components/Header';
 
 interface ISettingsPageData {
   className?: string;
@@ -31,7 +30,6 @@ const SettingsPage = ({ className }: ISettingsPageData) => {
           isOpen={isPopup} 
           onClose={handleClosePopup}  
         />
-        <Header />
         <SettingsHeader
           onOpen={handleOpenPopup}
         />

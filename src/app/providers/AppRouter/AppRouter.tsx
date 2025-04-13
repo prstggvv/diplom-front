@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import ProtectedRoute from "../../../components/ProtectedRoute/ProtectedRoute";
 import { userApi } from "../../../shared/api/UserApi";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../../shared/store/slice/userSlice";
+import { setUser, logout } from "../../../shared/store/slice/userSlice";
 
 const AppRouter = () => {
   const dispatch = useDispatch();
@@ -65,12 +65,21 @@ const AppRouter = () => {
     handleCheckToken();
   }, [loggedIn]);
 
+  const handleExit = () => {
+    setLoggedIn(false);
+    localStorage.clear();
+    dispatch(logout());
+  }
+
   return (
     <>
       <Routes>
         <Route path='/' element={
           <>
-            <Header />
+            <Header 
+              isLogged={loggedIn}
+              exit={handleExit}
+            />
             <Main />
           </>
         } />
@@ -88,7 +97,10 @@ const AppRouter = () => {
         } />
         <Route path='/schedule' element={
           <>
-            <Header />
+            <Header 
+              isLogged={loggedIn}
+              exit={handleExit}
+            />
             <ProtectedRoute 
               element={<Schedule />}
               loggedIn={loggedIn}
@@ -97,7 +109,10 @@ const AppRouter = () => {
         } />
         <Route path='/settings' element={
           <>
-            <Header />
+            <Header 
+              isLogged={loggedIn}
+              exit={handleExit}
+            />
             <ProtectedRoute 
               element={<Settings />}
               loggedIn={loggedIn}

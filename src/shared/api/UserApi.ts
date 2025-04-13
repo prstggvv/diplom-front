@@ -6,11 +6,11 @@ import {
   IUserAuthRes,
 } from "../../types";
 
-export class UserApi extends Api {
-  constructor(baseUrl: string, initData: string, options?: RequestInit) {
+class UserApi extends Api {
+  constructor(baseUrl: string, jwt?: string, options?: RequestInit) {
     const headers = {
       ...options?.headers,
-      'Authorization': `Bearer ${initData}`,
+      'Authorization': `Bearer ${jwt}`,
     };
     super(baseUrl, { ...options, headers });
   }
@@ -22,4 +22,14 @@ export class UserApi extends Api {
   login(data: IUserAuthData): Promise<IUserAuthRes> {
     return this.post('/signin', data);
   }
+
+  checkToken(jwt: string | null): Promise<IUserResData> {
+    return this.get('/users/me', {
+      headers: {
+        'Authorization': `Bearer ${jwt}`,
+      },
+    });
+  }
 }
+
+export const userApi = new UserApi('http://localhost:3000')

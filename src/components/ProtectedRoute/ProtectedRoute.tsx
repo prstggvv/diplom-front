@@ -9,7 +9,7 @@ interface ProtectedRouteProps {
 function ProtectedRoute({
   element, loggedIn,
 }: ProtectedRouteProps): ReactElement {
-  return loggedIn ? element : <Navigate to="/" replace />;
+  return loggedIn ? element : <Navigate to='/' replace />;
 }
 
 export default ProtectedRoute;

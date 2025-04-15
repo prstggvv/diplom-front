@@ -1,25 +1,41 @@
 import { classNames } from '../../../utils/classNames/classNames';
 import cls from './Header.module.css';
 import LogoSvg from '../../../assets/images/icons/logo.svg';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 interface IHeaderData {
-  className?: string;
   isLogged: boolean;
   exit: () => void;
 }
 
 export const Header = ({ 
-  className, isLogged, exit,
+  isLogged, exit,
 }: IHeaderData) => {
+  const location = useLocation();
+
+  const handleSwitchBackgroundColor = () => {
+    if (location.pathname === '/schedule' ||
+        location.pathname === '/settings'
+    ) {
+      return cls.dark;
+    } else if (location.pathname === '/') {
+      return '';
+    }
+  }
+
   return (
-    <header className={classNames(cls.header, {}, [className || ''])}>
-      <div className={classNames(cls.container, {}, [])}>
-        <img 
-          className={classNames(cls.logo, {}, [])}
-          alt='логотип'
-          src={LogoSvg}
-        />
+    <header className={classNames(cls.header, {}, [handleSwitchBackgroundColor() || ''])}>
+      <div className={classNames(cls.container, {}, [handleSwitchBackgroundColor() || ''])}>
+        <Link
+          to='/'
+          className={classNames(cls.link, {}, [])}
+        >
+          <img 
+            className={classNames(cls.logo, {}, [])}
+            alt='логотип'
+            src={LogoSvg}
+          />
+        </Link>
         {isLogged ? (
           <>
             <nav className={classNames(cls.nav, {}, [])}>
@@ -30,7 +46,9 @@ export const Header = ({
               className={classNames(cls.exit, {}, [])}
               onClick={exit}
             >
-              Выйти
+              <span className={classNames(cls.span, {}, [])}>
+                Выйти
+              </span>
             </button>
           </>
         ) : (

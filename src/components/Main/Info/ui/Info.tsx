@@ -1,14 +1,19 @@
 import { classNames } from '../../../../utils/classNames/classNames';
 import cls from './Info.module.css';
 import AvatarImage from '../../../../assets/images/avatar.jpg';
+import { forwardRef, Ref } from 'react';
 
 interface IInfoData {
   className?: string;
+  ref?: Ref<HTMLDivElement>;
 }
 
-export const Info = ({ className }: IInfoData) => {
+export const Info = forwardRef<HTMLDivElement, IInfoData>(({ className }, ref) => {
   return (
-    <section className={classNames(cls.section, {}, [className || ''])}>
+    <section 
+      className={classNames(cls.section, {}, [className || ''])}
+      ref={ref}
+    >
       <article className={classNames(cls.container, {}, [])}>
         <p className={classNames(cls.subtitle, {}, [])}>Студент</p>
         <div className={classNames(cls.info, {}, [])}>
@@ -36,4 +41,4 @@ export const Info = ({ className }: IInfoData) => {
       </article>
     </section>
   );
-};
+});

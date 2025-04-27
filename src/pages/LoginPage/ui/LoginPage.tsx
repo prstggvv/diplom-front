@@ -21,7 +21,6 @@ const LoginPage = ({ className, handleLogin }: ILoginPageData) => {
   const passwordRef = createRef<HTMLInputElement>();
   const [passwordIcon, setPasswordIcon] = useState<'HideIcon' | 'ShowIcon'>('HideIcon');
   const [passwordType, setPasswordType] = useState<'text' | 'password'>('password');
-
   const handleClickIcon = () => {
     if (passwordRef.current.type === 'password') {
       setPasswordType('text');
@@ -73,7 +72,9 @@ const LoginPage = ({ className, handleLogin }: ILoginPageData) => {
           />
           <Button
             type='submit'
-            className={classNames(cls.formButton, { [cls.formButtonActive]: isValid }, [])}
+            className={classNames(cls.formButton, { 
+              [cls.formButtonActive]: isValid 
+            }, [])}
           >
             {'Войти в аккаунт'}
           </Button>

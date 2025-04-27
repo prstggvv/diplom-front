@@ -29,7 +29,8 @@ export const Promo = ({ className, toInfo, }: IPromoData) => {
         </button>
         <img 
           className={classNames(cls.image, {}, [])}
-          alt='логотип веб-разработка'
+          alt='логотип веб-разработка. Много слов WEB, формирует
+              планету земля'
           src={LogoSvg} 
         />
       </div>

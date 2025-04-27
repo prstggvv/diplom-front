@@ -30,6 +30,6 @@
 
 .formButtonActive {
   background-color: var(--light-grey-primary);
-  color: var(--light-grey-primary);
+  color: var(--navbar-bg-color);
   cursor: pointer;
 }

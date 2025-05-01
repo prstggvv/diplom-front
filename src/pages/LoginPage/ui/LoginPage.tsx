@@ -48,6 +48,7 @@ const LoginPage = ({ className, handleLogin }: ILoginPageData) => {
           textTitle='Вход в аккаунт'
           subtitle='Ещё не зарегистрированы?'
           auth='Регистрация'
+          to='/signup'
         >
           <Input
             type='email'
@@ -72,6 +73,7 @@ const LoginPage = ({ className, handleLogin }: ILoginPageData) => {
           />
           <Button
             type='submit'
+            disabled={!isValid}
             className={classNames(cls.formButton, { 
               [cls.formButtonActive]: isValid 
             }, [])}

@@ -4,6 +4,8 @@ import {
   IUserResData,
   IUserAuthData,
   IUserAuthRes,
+  IGroupRes,
+  ISubjectRes,
 } from "../../types";
 
 class UserApi extends Api {
@@ -29,6 +31,14 @@ class UserApi extends Api {
         'Authorization': `Bearer ${jwt}`,
       },
     });
+  }
+
+  getAllGroups(): Promise<IGroupRes> {
+    return this.get('/groups');
+  }
+
+  createSubject(data: ISubjectRes): Promise<ISubjectRes> {
+    return this.post('/subject', data);
   }
 }
 

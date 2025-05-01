@@ -5,7 +5,7 @@
 }
 
 .header.dark {
-  background-color: rgb(32, 32, 32);
+  background-color: #2F4F4F;
 }
 
 .container {
@@ -18,7 +18,7 @@
 }
 
 .container.dark {
-  background-color: rgb(32, 32, 32);
+  background-color: #2F4F4F;
 }
 
 .logo {

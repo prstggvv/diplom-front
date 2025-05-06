@@ -1,4 +1,5 @@
 import { classNames } from '../../../../utils/classNames/classNames';
+import { DropDownMenu } from '../../../DropDownMenu';
 import cls from './SettingsHeader.module.css';
 
 interface ISettingsHeaderData {
@@ -13,10 +14,13 @@ export const SettingsHeader = ({ className, onOpen }: ISettingsHeaderData) => {
         <h1 className={classNames(cls.title, {}, [])}>
           Добавить блоки расписания
         </h1>
-        <button 
-          className={classNames(cls.button, {}, [])}
-          onClick={onOpen}
-        ></button>
+        <div className={classNames(cls.block, {}, [])}>
+          <button 
+            className={classNames(cls.button, {}, [])}
+            onClick={onOpen}
+          ></button>
+          <DropDownMenu />
+        </div>
       </div>
     </section>
   );

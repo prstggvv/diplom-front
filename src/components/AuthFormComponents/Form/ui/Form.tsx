@@ -13,6 +13,7 @@ interface IFormData {
   auth: string;
   children: ReactNode;
   onSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  to: string;
 }
 
 
@@ -23,6 +24,7 @@ export const Form = ({
   auth,
   children,
   onSubmit,
+  to,
 }: IFormData) => {
   return (
     <form 
@@ -31,11 +33,16 @@ export const Form = ({
       noValidate
     >
       <div className={classNames(cls.container, {}, [])}>
-        <img 
-          className={classNames(cls.svg, {}, [])}
-          src={SvgImage}
-          alt='логотип'
-        />
+        <Link
+          className={classNames(cls.li, {}, [])}
+          to='/'
+        >
+          <img 
+            className={classNames(cls.svg, {}, [])}
+            src={SvgImage}
+            alt='логотип'
+          />
+        </Link>
         <h1 className={classNames(cls.title, {}, [])}>
           {textTitle}
         </h1>
@@ -44,7 +51,7 @@ export const Form = ({
       <p className={classNames(cls.text, {}, [])}>
         {subtitle}
         <Link
-          to='/'
+          to={to}
           className={classNames(cls.link, {}, [])}
         >
           {auth}

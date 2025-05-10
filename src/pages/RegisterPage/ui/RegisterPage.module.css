@@ -29,7 +29,11 @@
 }
 
 .formButtonActive {
-  background-color: var(--light-grey-primary);
+  background-color: var(--blue-color-light);
   color: var(--light-grey-primary);
   cursor: pointer;
+}
+
+.formButtonActive:hover {
+  opacity: .7;
 }

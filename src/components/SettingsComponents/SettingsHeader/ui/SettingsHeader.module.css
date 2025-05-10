@@ -24,6 +24,12 @@
   letter-spacing: -0.04em;
 }
 
+.block {
+  align-items: center;
+  display: flex;
+  gap: 15px;
+}
+
 .button {
   background-image: url('../../../../assets/images/icons/settings/Add__Button.svg');
   background-size: 100% 100%;
@@ -37,4 +43,11 @@
 
 .button:hover {
   opacity: .7;
+}
+
+@media screen and (max-width: 467px) {
+  .block {
+    flex-direction: column;
+    gap: 10px;
+  }
 }

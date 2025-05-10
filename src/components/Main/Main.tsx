@@ -5,15 +5,27 @@ import cls from './Main.module.css';
 import { Promo } from './Promo';
 import { Tech } from './Tech';
 
+import { useRef, RefObject } from 'react';
+
 interface IMainData {
   className?: string;
 }
 
 const Main = ({ className }: IMainData) => {
+  const scrollToInfo: RefObject<HTMLDivElement> = useRef(null);
+
+  const handleScroll = (ref: RefObject<HTMLDivElement>) => () => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <main className={classNames(cls.main, {}, [className || ''])}>
-      <Promo />
-      <Info />
+      <Promo 
+        toInfo={handleScroll(scrollToInfo)}
+      />
+      <Info 
+        ref={scrollToInfo}
+      />
       <Front />
       <Tech />
     </main>

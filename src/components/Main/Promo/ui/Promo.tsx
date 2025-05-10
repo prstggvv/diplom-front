@@ -4,9 +4,10 @@ import LogoSvg from '../../../../assets/images/promo_logo.svg';
 
 interface IPromoData {
   className?: string;
+  toInfo: () => void;
 }
 
-export const Promo = ({ className }: IPromoData) => {
+export const Promo = ({ className, toInfo, }: IPromoData) => {
   return (
     <section className={classNames(cls.section, {}, [className || ''])}>
       <div className={classNames(cls.container, {}, [])}>
@@ -22,12 +23,14 @@ export const Promo = ({ className }: IPromoData) => {
         <button 
           className={classNames(cls.button, {}, [])}
           type='button'
+          onClick={toInfo}
         >
           Узнать больше
         </button>
         <img 
           className={classNames(cls.image, {}, [])}
-          alt='логотип веб-разработка'
+          alt='логотип веб-разработка. Много слов WEB, формирует
+              планету земля'
           src={LogoSvg} 
         />
       </div>

@@ -17,3 +17,22 @@ export interface IUserAuthData {
 export interface IUserAuthRes {
   token: string;
 }
+
+export interface IGroupRes {
+  name: string;
+  course: number;
+}
+
+export interface ISubjectRes {
+  teacherName: string;
+  subjectName: string;
+  subjectType: string;
+  group: string;
+}
+
+export interface IGroupByIdRes {
+  name: string;
+  course: string;
+  groupId: string;
+  subjects: ISubjectRes[];
+}

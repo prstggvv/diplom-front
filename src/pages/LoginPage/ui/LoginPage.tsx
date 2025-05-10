@@ -8,9 +8,10 @@ import { FormEvent, ChangeEvent, createRef, useState } from 'react';
 
 interface ILoginPageData {
   className?: string;
+  handleLogin: (email: string, password: string) => void;
 }
 
-const LoginPage = ({ className }: ILoginPageData) => {
+const LoginPage = ({ className, handleLogin }: ILoginPageData) => {
   const {
     values,
     errors,
@@ -20,7 +21,6 @@ const LoginPage = ({ className }: ILoginPageData) => {
   const passwordRef = createRef<HTMLInputElement>();
   const [passwordIcon, setPasswordIcon] = useState<'HideIcon' | 'ShowIcon'>('HideIcon');
   const [passwordType, setPasswordType] = useState<'text' | 'password'>('password');
-
   const handleClickIcon = () => {
     if (passwordRef.current.type === 'password') {
       setPasswordType('text');
@@ -35,6 +35,8 @@ const LoginPage = ({ className }: ILoginPageData) => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    handleLogin(values.email, values.password);
   }
 
   return (
@@ -46,17 +48,8 @@ const LoginPage = ({ className }: ILoginPageData) => {
           textTitle='Вход в аккаунт'
           subtitle='Ещё не зарегистрированы?'
           auth='Регистрация'
+          to='/signup'
         >
-          <Input 
-            type='text'
-            placeholder='Имя'
-            onChange={(e: ChangeEvent<HTMLInputElement>) => handleChange(e)}
-            value={values.name || ''}
-            name='name'
-            error={Object.prototype.hasOwnProperty.call(errors, 'name')}
-            errorText={errors.name || ''}
-            className={classNames(cls.input, {}, [])}
-          />
           <Input
             type='email'
             placeholder='E-mail'
@@ -80,7 +73,10 @@ const LoginPage = ({ className }: ILoginPageData) => {
           />
           <Button
             type='submit'
-            className={classNames(cls.formButton, { [cls.formButtonActive]: isValid }, [])}
+            disabled={!isValid}
+            className={classNames(cls.formButton, { 
+              [cls.formButtonActive]: isValid 
+            }, [])}
           >
             {'Войти в аккаунт'}
           </Button>

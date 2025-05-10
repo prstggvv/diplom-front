@@ -30,9 +30,10 @@ export class Api {
     });
   }
 
-  get<T>(uri: string): Promise<T> {
+  get<T>(uri: string, extraOptions?: RequestInit): Promise<T> {
     return fetch(this.baseUrl + uri, {
       ...this.options,
+      ...extraOptions,
       method: 'GET',
     }).then((response) => this.handleResponse<T>(response));
   }

@@ -9,6 +9,16 @@
   justify-content: center;
 }
 
+.li {
+  width: 36px;
+  height: 36px;
+  opacity: 1;
+}
+
+.li:hover {
+  opacity: .7;
+}
+
 .svg {
   width: 36px;
   height: 36px;

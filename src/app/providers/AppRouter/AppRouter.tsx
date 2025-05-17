@@ -10,12 +10,22 @@ import ProtectedRoute from "../../../components/ProtectedRoute/ProtectedRoute";
 import { userApi } from "../../../shared/api/UserApi";
 import { useDispatch } from "react-redux";
 import { setUser, logout } from "../../../shared/store/slice/userSlice";
+import { NavMenu } from "../../../components/NavMenu";
 
 const AppRouter = () => {
   const dispatch = useDispatch();
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isOpenNav, setIsOpenNav] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  const handleOpenNav = () => {
+    setIsOpenNav((prev) => !prev);
+  }
+
+  const handleCloseNav = () => {
+    setIsOpenNav(false);
+  }
 
   const handleRegistration = (
     email: string, name: string, password: string,
@@ -73,10 +83,16 @@ const AppRouter = () => {
 
   return (
     <>
+      <NavMenu 
+        isOpen={isOpenNav}
+        isClose={handleCloseNav}
+        isOut={handleExit}
+      />
       <Routes>
         <Route path='/' element={
           <>
-            <Header 
+            <Header
+              isOpen={handleOpenNav}
               isLogged={loggedIn}
               exit={handleExit}
             />
@@ -97,7 +113,8 @@ const AppRouter = () => {
         } />
         <Route path='/schedule' element={
           <>
-            <Header 
+            <Header
+              isOpen={handleOpenNav}
               isLogged={loggedIn}
               exit={handleExit}
             />
@@ -109,7 +126,8 @@ const AppRouter = () => {
         } />
         <Route path='/settings' element={
           <>
-            <Header 
+            <Header
+              isOpen={handleOpenNav}
               isLogged={loggedIn}
               exit={handleExit}
             />

@@ -6,10 +6,11 @@ import { Link, useLocation } from 'react-router-dom';
 interface IHeaderData {
   isLogged: boolean;
   exit: () => void;
+  isOpen: () => void;
 }
 
 export const Header = ({ 
-  isLogged, exit,
+  isLogged, exit, isOpen,
 }: IHeaderData) => {
   const location = useLocation();
 
@@ -38,7 +39,8 @@ export const Header = ({
         </Link>
         {isLogged ? (
           <>
-            <nav className={classNames(cls.nav, {}, [])}>
+          <div className={classNames(cls.hidden, {}, [])}>
+            <nav className={classNames(cls.nav, {}, [cls.visible])}>
               <Link to='/settings' className={classNames(cls.link, {}, [cls.up])}>Настройки</Link>
               <Link to='/schedule' className={classNames(cls.link, {}, [cls.up])}>Расписание</Link>
             </nav>
@@ -50,6 +52,11 @@ export const Header = ({
                 Выйти
               </span>
             </button>
+          </div>
+          <button
+            className={classNames(cls.navigator, {}, [])}
+            onClick={isOpen}
+          ></button>
           </>
         ) : (
           <nav className={classNames(cls.nav, {}, [])}>

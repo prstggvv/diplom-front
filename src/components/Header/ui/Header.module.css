@@ -17,6 +17,13 @@
   padding: 18px 0 18px 0;
 }
 
+.hidden {
+  display: flex;
+  align-items: center;
+  width: 58%;
+  justify-content: space-between;
+}
+
 .container.dark {
   background-color: #2F4F4F;
 }
@@ -121,4 +128,18 @@
 .exit:hover::after {
   opacity: 0; 
   transform: scale(0.1, 1);
+}
+
+.navigator {
+  display: none;
+}
+
+@media screen and (max-width: 581px) {
+  .hidden {
+    display: none;
+  }
+
+  .navigator {
+    display: block;
+  }
 }

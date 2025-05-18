@@ -1,3 +1,6 @@
+import complete from '../../../assets/images/icons/popup/yes.svg';
+import error from '../../../assets/images/icons/popup/no.svg';
+
 import { Routes, Route, useNavigate, useLocation, Navigate } from "react-router-dom";
 import { Header } from "../../../components/Header";
 import Main from "../../../components/Main/Main";
@@ -11,10 +14,14 @@ import { userApi } from "../../../shared/api/UserApi";
 import { useDispatch } from "react-redux";
 import { setUser, logout } from "../../../shared/store/slice/userSlice";
 import { NavMenu } from "../../../components/NavMenu";
+import { InfoToolTip } from '../../../components/InfoToolTip';
 
 const AppRouter = () => {
   const dispatch = useDispatch();
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isPopup, setIsPopup] = useState(false);
+  const [isTextPopup, setIsTextPopup] = useState('');
+  const [logoPopup, setLogoPopup] = useState('');
   const [isOpenNav, setIsOpenNav] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -27,15 +34,25 @@ const AppRouter = () => {
     setIsOpenNav(false);
   }
 
+  const handleClosePopup = () => {
+    setIsPopup(false);
+  }
+
   const handleRegistration = (
     email: string, name: string, password: string,
   ) => {
     const data = { name, email, password };
     userApi.registration(data)
       .then(() => {
+        setIsPopup(true);
+        setLogoPopup(complete);
+        setIsTextPopup('Вы зарегестрировались!');
         navigate('/signin', {replace: true});
       })
       .catch((err) => {
+        setIsPopup(true);
+        setLogoPopup(error);
+        setIsTextPopup('Что-то пошло не так!');
         console.log(err);
       })
   }
@@ -46,12 +63,18 @@ const AppRouter = () => {
       .then((res) => {
         if (res.token && res) {
           localStorage.setItem('jwt', res.token);
+          setIsPopup(true);
+          setLogoPopup(complete);
+          setIsTextPopup('Вы вошли!');
           dispatch(setUser(email));
           setLoggedIn(true);
           navigate('/schedule', {replace: true});
         }
       })
       .catch((err) => {
+        setIsPopup(true);
+        setLogoPopup(error);
+        setIsTextPopup('Что-то пошло не так!');
         console.log(err);
       })
   }
@@ -83,10 +106,16 @@ const AppRouter = () => {
 
   return (
     <>
-      <NavMenu 
+      <NavMenu
         isOpen={isOpenNav}
         isClose={handleCloseNav}
         isOut={handleExit}
+      />
+      <InfoToolTip
+        isClose={handleClosePopup}
+        logo={logoPopup}
+        isOpen={isPopup}
+        title={isTextPopup}
       />
       <Routes>
         <Route path='/' element={

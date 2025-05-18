@@ -132,6 +132,15 @@
 
 .navigator {
   display: none;
+  background-color: transparent;
+  background-position: center;
+  background-size: cover;
+  width: 44px;
+  height: 44px;
+  border: none;
+  margin: 0;
+  cursor: pointer;
+  background-image: url('../../../assets/images/icons/popup/burger.svg');
 }
 
 @media screen and (max-width: 581px) {

@@ -58,8 +58,11 @@
 }
 
 .close {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
+  background-image: url('../../../assets/images/icons/popup/close_icon.svg');
+  background-color: transparent;
+  border: none;
   position: absolute;
   top: 20px;
   right: 20px;

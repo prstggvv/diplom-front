@@ -17,6 +17,13 @@
   padding: 18px 0 18px 0;
 }
 
+.hidden {
+  display: flex;
+  align-items: center;
+  width: 58%;
+  justify-content: space-between;
+}
+
 .container.dark {
   background-color: #2F4F4F;
 }
@@ -121,4 +128,31 @@
 .exit:hover::after {
   opacity: 0; 
   transform: scale(0.1, 1);
+}
+
+.navigator {
+  display: none;
+  background-color: transparent;
+  background-position: center;
+  background-size: cover;
+  width: 44px;
+  height: 44px;
+  border: none;
+  margin: 0;
+  cursor: pointer;
+  background-image: url('../../../assets/images/icons/popup/burger.svg');
+}
+
+.navigator:hover {
+  opacity: .7;
+}
+
+@media screen and (max-width: 581px) {
+  .hidden {
+    display: none;
+  }
+
+  .navigator {
+    display: block;
+  }
 }

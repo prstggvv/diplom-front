@@ -19,12 +19,12 @@ export const InfoToolTip = ({
   return (
     <div className={classNames(cls.popup, {[cls.open]: isOpen}, [className || ''])}>
       <div className={classNames(cls.container, {}, [])}>
-        <h1 className={classNames(cls.title, {}, [])}>{title}</h1>
         <img 
           className={classNames(cls.image, {}, [])}
           alt='Картинка крестик ошибка'
           src={logo}
         />
+        <h1 className={classNames(cls.title, {}, [])}>{title}</h1>
         <button
           className={classNames(cls.close, {}, [])}
           onClick={isClose}

@@ -143,6 +143,10 @@
   background-image: url('../../../assets/images/icons/popup/burger.svg');
 }
 
+.navigator:hover {
+  opacity: .7;
+}
+
 @media screen and (max-width: 581px) {
   .hidden {
     display: none;

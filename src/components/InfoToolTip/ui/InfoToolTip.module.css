@@ -56,3 +56,7 @@
   cursor: pointer;
   background-image: url('../../../assets/images/icons/popup/close_icon.svg');
 }
+
+.close:hover {
+  opacity: .7;
+}

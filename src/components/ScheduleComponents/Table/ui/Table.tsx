@@ -12,6 +12,9 @@ export const Table = ({ className }: ITableData) => {
         <table className={classNames(cls.table, {}, [])}>
           <thead className={classNames(cls.thead, {}, [])}>
             <tr className={classNames(cls.rowHead, {}, [])}>
+              <th className={classNames(cls.cell, {}, [cls.first])}>
+                №
+              </th>
               <th className={classNames(cls.cell, {}, [cls.header])}>
                 Понедельник
               </th>
@@ -32,7 +35,50 @@ export const Table = ({ className }: ITableData) => {
           <tbody className={classNames(cls.body, {}, [])}>
             <tr className={classNames(cls.row, {}, [])}>
               <td className={classNames(cls.cell, {}, [cls.fullCell])}>
+                1
+              </td>
+              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
+                Разработка виртуальной реальности
+              </td>
+              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
+                -
+              </td>
+              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
                 Cell 1
+              </td>
+              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
+                Cell 1
+              </td>
+              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
+                Cell 1
+              </td>
+            </tr>
+            <tr className={classNames(cls.row, {}, [])}>
+              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
+                2
+              </td>
+              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
+                -
+              </td>
+              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
+                Цифровая доступность
+              </td>
+              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
+                Cell 1
+              </td>
+              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
+                Cell 1
+              </td>
+              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
+                Cell 1
+              </td>
+            </tr>
+            <tr className={classNames(cls.row, {}, [])}>
+              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
+                3
+              </td>
+              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
+                ООП
               </td>
               <td className={classNames(cls.cell, {}, [cls.fullCell])}>
                 Cell 1
@@ -49,41 +95,10 @@ export const Table = ({ className }: ITableData) => {
             </tr>
             <tr className={classNames(cls.row, {}, [])}>
               <td className={classNames(cls.cell, {}, [cls.fullCell])}>
-                Cell 1
+                4
               </td>
               <td className={classNames(cls.cell, {}, [cls.fullCell])}>
-                Cell 1
-              </td>
-              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
-                Cell 1
-              </td>
-              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
-                Cell 1
-              </td>
-              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
-                Cell 1
-              </td>
-            </tr>
-            <tr className={classNames(cls.row, {}, [])}>
-              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
-                Cell 1
-              </td>
-              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
-                Cell 1
-              </td>
-              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
-                Cell 1
-              </td>
-              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
-                Cell 1
-              </td>
-              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
-                Cell 1
-              </td>
-            </tr>
-            <tr className={classNames(cls.row, {}, [])}>
-              <td className={classNames(cls.cell, {}, [cls.fullCell])}>
-                Cell 1
+                -
               </td>
               <td className={classNames(cls.cell, {}, [cls.fullCell])}>
                 Cell 1

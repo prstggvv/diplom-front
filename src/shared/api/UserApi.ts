@@ -1,5 +1,5 @@
 import { Api } from "./Api";
-import { 
+import {
   IUserRegData,
   IUserResData,
   IUserAuthData,
@@ -42,4 +42,4 @@ class UserApi extends Api {
   }
 }
 
-export const userApi = new UserApi('http://localhost:3000')
+export const userApi = new UserApi('http://localhost:3000');

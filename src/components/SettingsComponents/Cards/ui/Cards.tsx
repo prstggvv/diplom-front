@@ -20,18 +20,18 @@ export const Cards = ({ className }: ICardsData) => {
           </li>
           <li className={classNames(cls.card, {}, [])}>
             <h2 className={classNames(cls.heading, {}, [])}>
-              Разработка виртуальной реальности
+              Цифровая доступность
             </h2>
             <p className={classNames(cls.teacher, {}, [])}>
-              Стус Е. А.
+              Косова Е. А.
             </p>
           </li>
           <li className={classNames(cls.card, {}, [])}>
             <h2 className={classNames(cls.heading, {}, [])}>
-              Разработка виртуальной реальности
+              ООП
             </h2>
             <p className={classNames(cls.teacher, {}, [])}>
-              Стус Е. А.
+              Ляшко А. Д.
             </p>
           </li>
         </ul>

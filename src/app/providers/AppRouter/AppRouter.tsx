@@ -19,10 +19,12 @@ import { InfoToolTip } from '../../../components/InfoToolTip';
 const AppRouter = () => {
   const dispatch = useDispatch();
   const [loggedIn, setLoggedIn] = useState(false);
+
   const [isPopup, setIsPopup] = useState(false);
   const [isTextPopup, setIsTextPopup] = useState('');
   const [logoPopup, setLogoPopup] = useState('');
   const [isOpenNav, setIsOpenNav] = useState(false);
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -161,7 +163,8 @@ const AppRouter = () => {
               exit={handleExit}
             />
             <ProtectedRoute 
-              element={<Settings />}
+              element={<Settings 
+              />}
               loggedIn={loggedIn}
             />
           </>

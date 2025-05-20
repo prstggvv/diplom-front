@@ -19,7 +19,8 @@ export const SettingsHeader = ({ className, onOpen }: ISettingsHeaderData) => {
             className={classNames(cls.button, {}, [])}
             onClick={onOpen}
           ></button>
-          <DropDownMenu />
+          <DropDownMenu 
+          />
         </div>
       </div>
     </section>

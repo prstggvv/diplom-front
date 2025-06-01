@@ -1,0 +1,23 @@
+.card {
+  max-width: 750px;
+  width: 100%;
+  border: 1px solid white;
+  border-radius: 3px;
+  padding: 30px;
+}
+
+.heading {
+  text-align: start;
+  font-family: var(--font-inter-regular);
+  color: var(--color-ligth);
+  font-size: 20px;
+  margin: 0;
+}
+
+.teacher {
+  text-align: start;
+  font-family: var(--font-inter-regular);
+  color: var(--color-ligth);
+  font-size: 20px;
+  margin: 0;
+}

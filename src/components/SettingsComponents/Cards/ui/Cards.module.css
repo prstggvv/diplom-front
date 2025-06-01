@@ -47,3 +47,11 @@
   font-size: 20px;
   margin: 0;
 }
+
+.empty {
+  text-align: start;
+  font-family: var(--font-inter-regular);
+  color: rgb(207, 207, 207);
+  font-size: 20px;
+  margin: 100px auto;
+}

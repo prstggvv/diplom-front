@@ -9,9 +9,15 @@ import { ICardData } from '../../../types';
 
 interface ISettingsPageData {
   className?: string;
+  handleClick: () => void;
+  loading: boolean;
 }
 
-const SettingsPage = ({ className }: ISettingsPageData) => {
+const SettingsPage = ({ 
+  className,
+  handleClick,
+  loading,
+}: ISettingsPageData) => {
   const [isPopup, setIsPopup] = useState<boolean>(false);
   const [cards, setCards] = useState<ICardData[]>([]);
 
@@ -44,7 +50,10 @@ const SettingsPage = ({ className }: ISettingsPageData) => {
         <Cards 
           cards={cards}
         />
-        <ButtonComplete />
+        <ButtonComplete
+          handleClick={handleClick}
+          loading={loading}
+        />
       </div>
     </main>
   );

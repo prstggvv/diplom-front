@@ -7,7 +7,10 @@ interface ISettingsHeaderData {
   onOpen: () => void;
 }
 
-export const SettingsHeader = ({ className, onOpen }: ISettingsHeaderData) => {
+export const SettingsHeader = ({ 
+  className,
+  onOpen,
+}: ISettingsHeaderData) => {
   return (
     <section className={classNames(cls.section, {}, [className || ''])}>
       <div className={classNames(cls.container, {}, [])}>
@@ -19,7 +22,10 @@ export const SettingsHeader = ({ className, onOpen }: ISettingsHeaderData) => {
             className={classNames(cls.button, {}, [])}
             onClick={onOpen}
           ></button>
-          <DropDownMenu 
+          <DropDownMenu
+            className={classNames(cls.dropdown, {}, [])}
+            options={['ПМ-211 4 курс', 'БИ-220 2 курс', 'ФИ-3 2 курс']}
+            placeholder='группа'
           />
         </div>
       </div>

@@ -50,3 +50,8 @@ export interface IGroupByIdRes {
   groupId: string;
   subjects: ISubjectRes[];
 }
+
+export interface ICardData {
+  subject: string;
+  teacher: string;
+}

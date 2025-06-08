@@ -1,40 +1,30 @@
+import { ICardData } from '../../../../types';
 import { classNames } from '../../../../utils/classNames/classNames';
+import { Card } from '../../Card/ui/Card';
 import cls from './Cards.module.css';
 
 interface ICardsData {
   className?: string;
+  cards: ICardData[];
 }
 
-export const Cards = ({ className }: ICardsData) => {
+export const Cards = ({ className, cards, }: ICardsData) => {
   return (
     <section className={classNames(cls.section, {}, [className || ''])}>
       <div className={classNames(cls.container, {}, [])}>
-        <ul className={classNames(cls.list, {}, [])}>
-          <li className={classNames(cls.card, {}, [])}>
-            <h2 className={classNames(cls.heading, {}, [])}>
-              Разработка виртуальной реальности
-            </h2>
-            <p className={classNames(cls.teacher, {}, [])}>
-              Стус Е. А.
-            </p>
-          </li>
-          <li className={classNames(cls.card, {}, [])}>
-            <h2 className={classNames(cls.heading, {}, [])}>
-              Цифровая доступность
-            </h2>
-            <p className={classNames(cls.teacher, {}, [])}>
-              Косова Е. А.
-            </p>
-          </li>
-          <li className={classNames(cls.card, {}, [])}>
-            <h2 className={classNames(cls.heading, {}, [])}>
-              ООП
-            </h2>
-            <p className={classNames(cls.teacher, {}, [])}>
-              Ляшко А. Д.
-            </p>
-          </li>
-        </ul>
+        {cards.length > 0 ? (
+          <ul className={classNames(cls.list, {}, [])}>
+            {cards.map((card, index) => (
+              <Card
+                key={index}
+                subject={card.subject}
+                teacher={card.teacher}
+              />
+            ))}
+          </ul>
+        ) : (
+          <p className={cls.empty}>Нет добавленных предметов</p>
+        )}
       </div>
     </section>
   );

@@ -19,6 +19,7 @@ import { InfoToolTip } from '../../../components/InfoToolTip';
 const AppRouter = () => {
   const dispatch = useDispatch();
   const [loggedIn, setLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [isPopup, setIsPopup] = useState(false);
   const [isTextPopup, setIsTextPopup] = useState('');
@@ -106,6 +107,24 @@ const AppRouter = () => {
     dispatch(logout());
   }
 
+  const handleClick = () => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      navigate('/schedule', { state: { showPopup: true } });
+    }, 4000);
+  };
+
+  useEffect(() => {
+    if (location.pathname === '/schedule' && location.state?.showPopup) {
+      setIsTextPopup('Вы успешно сгенерировали расписание');
+      setLogoPopup(complete);
+      setIsPopup(true);
+      window.history.replaceState({}, document.title);
+    }
+  }, [location]);
+
   return (
     <>
       <NavMenu
@@ -163,7 +182,9 @@ const AppRouter = () => {
               exit={handleExit}
             />
             <ProtectedRoute 
-              element={<Settings 
+              element={<Settings
+                loading={loading}
+                handleClick={handleClick}
               />}
               loggedIn={loggedIn}
             />

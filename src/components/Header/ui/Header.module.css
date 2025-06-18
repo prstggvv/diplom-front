@@ -4,6 +4,10 @@
   width: 100%;
 }
 
+.header.dark {
+  background-color: #2F4F4F;
+}
+
 .container {
   width: 89.745%;
   margin: 0 auto;
@@ -11,6 +15,17 @@
   align-items: center;
   justify-content: space-between;
   padding: 18px 0 18px 0;
+}
+
+.hidden {
+  display: flex;
+  align-items: center;
+  width: 58%;
+  justify-content: space-between;
+}
+
+.container.dark {
+  background-color: #2F4F4F;
 }
 
 .logo {
@@ -52,4 +67,92 @@
   padding: 8px 20px;
   border-radius: 3px;
   background-color: rgb(61, 220, 132);
+}
+
+.exit {
+  border: none;
+  background-color: transparent;
+  line-height: 30px;
+  height: 30px;
+  text-align: center;
+  width: 50px;
+  cursor: pointer;
+  color: #FFF;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.span {
+  transition: all 0.3s;
+}
+
+.exit::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-top-color: rgba(255,255,255,0.5);
+  border-bottom-color: rgba(255,255,255,0.5);
+  transform: scale(0.1, 1);
+}
+
+.exit:hover .span {
+  letter-spacing: 2px;
+}
+
+.exit:hover::before {
+  opacity: 1; 
+  transform: scale(1, 1);
+}
+
+.exit::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.3s;
+}
+
+.exit:hover::after {
+  opacity: 0; 
+  transform: scale(0.1, 1);
+}
+
+.navigator {
+  display: none;
+  background-color: transparent;
+  background-position: center;
+  background-size: cover;
+  width: 44px;
+  height: 44px;
+  border: none;
+  margin: 0;
+  cursor: pointer;
+  background-image: url('../../../assets/images/icons/popup/burger.svg');
+}
+
+.navigator:hover {
+  opacity: .7;
+}
+
+@media screen and (max-width: 581px) {
+  .hidden {
+    display: none;
+  }
+
+  .navigator {
+    display: block;
+  }
 }

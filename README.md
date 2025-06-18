@@ -1,54 +1,91 @@
-# React + TypeScript + Vite
+# Дипломный проект для универа
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Приложение которое строит расписание, для ВУЗОВ.
 
-Currently, two official plugins are available:
+____
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Содержание
+- [Статус проекта](#статус-проекта)
+- [Технологии](#используемые-технологии)
+- [Что планируется дальше?](#что-планируется-дальше)
+- [Установка проекта](#установка-проекта)
+- [Запуск проекта](#запуск-проекта)
+- [Проверка линтинга](#проверка-линтинга)
 
-## Expanding the ESLint configuration
+___
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Статус проекта
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+В разработке!
+___
+
+## Технологии
+
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![Vite](https://img.shields.io/badge/vite-%238DD6F9.svg?style=for-the-badge&logo=vite&logoColor=black)
+![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
+
+____
+## Что планируется дальше?
+- Добавить разделение админ и пользователь
+- Улучшить дизайн вывода расписания
+- Добавить удобное управление таблицей для расписания
+
+____
+## Установка проекта
+Клонирование проекта SSH:
+```sh
+$ git clone git@github.com:prstVanya/portfolio.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+Установка зависимостей:
+```sh
+$ npm i
 ```
+___
+
+## Запуск проекта
+Запуск проекта:
+```sh
+npm run start
+```
+
+development сборка:
+```sh
+npm run build:dev
+```
+
+production сборка: 
+```sh
+npm run build
+```
+____
+
+## Проверка линтинга
+Для проверки TypeScript-файлов используется ESLint с конфигурацией airbnb-base.
+
+Проверка ts-файлов:
+```sh
+npm run lint:ts
+```
+
+Исправить ts-файлы:
+```sh
+npm run lint:ts:fix
+```
+
+Для проверки CSS-файлов используется Stylelint.
+
+Проверить css-файлы:
+```sh
+npm run lint:css
+```
+
+Исправить css-файлы:
+```sh
+npm run lint:css:fix
+```
+___

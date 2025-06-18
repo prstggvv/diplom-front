@@ -4,10 +4,10 @@
 }
 
 .input {
-  background: #1B1B1B;
   border-radius: 4px;
   border: 1px solid #1B1B1B;
-  color: #F1F1F1;
+  background-color: #D3D3D3;
+  color: #000000; 
   font-family: var(--font-inter-regular);
   font-size: 16px;
   line-height: 19px;
@@ -21,7 +21,7 @@
 }
 
 .errorText {
-  color: var(--error-color);
+  color: #FF4C4C; 
   display: block;
   font-family: var(--font-inter-regular);
   font-size: 12px;

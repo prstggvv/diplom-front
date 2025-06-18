@@ -24,6 +24,12 @@
   letter-spacing: -0.04em;
 }
 
+.block {
+  align-items: center;
+  display: flex;
+  gap: 15px;
+}
+
 .button {
   background-image: url('../../../../assets/images/icons/settings/Add__Button.svg');
   background-size: 100% 100%;
@@ -35,6 +41,34 @@
   cursor: pointer;
 }
 
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .button:hover {
   opacity: .7;
+}
+
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 3px solid #fff;
+  border-top: 3px solid #4caf50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 467px) {
+  .block {
+    flex-direction: column;
+    gap: 10px;
+  }
 }

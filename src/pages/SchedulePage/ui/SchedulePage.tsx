@@ -4,12 +4,17 @@ import cls from './SchedulePage.module.css';
 
 interface ISchedulePageData {
   className?: string;
+  tableData: string[][];
+  isScheduleGenerated: boolean;
 }
 
-const SchedulePage = ({ className }: ISchedulePageData) => {
+const SchedulePage = ({ className, tableData, isScheduleGenerated, }: ISchedulePageData) => {
   return (
     <main className={classNames(cls.section, {}, [className || ''])}>
-      <Table />
+      <Table 
+        tableData={tableData}
+        isScheduleGenerated={isScheduleGenerated}
+      />
     </main>
   );
 };

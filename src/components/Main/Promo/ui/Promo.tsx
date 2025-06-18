@@ -13,7 +13,7 @@ export const Promo = ({ className, toInfo, }: IPromoData) => {
       <div className={classNames(cls.container, {}, [])}>
         <div className={classNames(cls.info, {}, [])}>
           <h1 className={classNames(cls.title, {}, [])}>
-            Дипломный проект студента Приклодной математики.
+              Выпускная квалификационная работа студента Прикладной математики.
           </h1>
           <p className={classNames(cls.subtitle, {}, [])}>
             Листайте ниже, чтобы узнать больше про этот 

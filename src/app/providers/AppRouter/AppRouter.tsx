@@ -1,7 +1,13 @@
-import complete from '../../../assets/images/icons/popup/yes.svg';
-import error from '../../../assets/images/icons/popup/no.svg';
+import complete from "../../../assets/images/icons/popup/yes.svg";
+import error from "../../../assets/images/icons/popup/no.svg";
 
-import { Routes, Route, useNavigate, useLocation, Navigate } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+  Navigate,
+} from "react-router-dom";
 import { Header } from "../../../components/Header";
 import Main from "../../../components/Main/Main";
 import { Login } from "../../../pages/LoginPage";
@@ -14,7 +20,7 @@ import { userApi } from "../../../shared/api/UserApi";
 import { useDispatch } from "react-redux";
 import { setUser, logout } from "../../../shared/store/slice/userSlice";
 import { NavMenu } from "../../../components/NavMenu";
-import { InfoToolTip } from '../../../components/InfoToolTip';
+import { InfoToolTip } from "../../../components/InfoToolTip";
 
 const AppRouter = () => {
   const dispatch = useDispatch();
@@ -22,80 +28,107 @@ const AppRouter = () => {
   const [loading, setLoading] = useState(false);
 
   const [isPopup, setIsPopup] = useState(false);
-  const [isTextPopup, setIsTextPopup] = useState('');
-  const [logoPopup, setLogoPopup] = useState('');
+  const [isTextPopup, setIsTextPopup] = useState("");
+  const [logoPopup, setLogoPopup] = useState("");
   const [isOpenNav, setIsOpenNav] = useState(false);
+
+  const [isScheduleGenerated, setIsScheduleGenerated] = useState(false);
+  const [tableData, setTableData] = useState<string[][]>([]);
 
   const navigate = useNavigate();
   const location = useLocation();
 
+  const subjects = [
+    "ООП",
+    "Разработка виртуальной реальности",
+    "Цифровая доступность",
+  ];
+
+  const rooms = [
+    "101",
+    "202",
+    "301",
+    "404",
+    "102",
+    "203",
+    "11",
+    "12",
+    "14",
+    "18",
+  ];
+
   const handleOpenNav = () => {
     setIsOpenNav((prev) => !prev);
-  }
+  };
 
   const handleCloseNav = () => {
     setIsOpenNav(false);
-  }
+  };
 
   const handleClosePopup = () => {
     setIsPopup(false);
-  }
+  };
 
   const handleRegistration = (
-    email: string, name: string, password: string,
+    email: string,
+    name: string,
+    password: string,
   ) => {
     const data = { name, email, password };
-    userApi.registration(data)
+    userApi
+      .registration(data)
       .then(() => {
         setIsPopup(true);
         setLogoPopup(complete);
-        setIsTextPopup('Вы зарегестрировались!');
-        navigate('/signin', {replace: true});
+        setIsTextPopup("Вы зарегестрировались!");
+        navigate("/signin", { replace: true });
       })
       .catch((err) => {
         setIsPopup(true);
         setLogoPopup(error);
-        setIsTextPopup('Что-то пошло не так!');
+        setIsTextPopup("Что-то пошло не так!");
         console.log(err);
-      })
-  }
+      });
+  };
 
   const handleLogin = (email: string, password: string) => {
     const data = { email, password };
-    userApi.login(data)
+    userApi
+      .login(data)
       .then((res) => {
         if (res.token && res) {
-          localStorage.setItem('jwt', res.token);
+          localStorage.setItem("jwt", res.token);
           setIsPopup(true);
           setLogoPopup(complete);
-          setIsTextPopup('Вы вошли!');
+          setIsTextPopup("Вы вошли!");
           dispatch(setUser(email));
           setLoggedIn(true);
-          navigate('/schedule', {replace: true});
+          navigate("/schedule", { replace: true });
         }
       })
       .catch((err) => {
         setIsPopup(true);
         setLogoPopup(error);
-        setIsTextPopup('Что-то пошло не так!');
+        setIsTextPopup("Что-то пошло не так!");
         console.log(err);
-      })
-  }
+      });
+  };
 
   const handleCheckToken = () => {
     const path = location.pathname;
-    if (localStorage.getItem('jwt')) {
-      const jwt = localStorage.getItem('jwt');
-      userApi.checkToken(jwt)
+    if (localStorage.getItem("jwt")) {
+      const jwt = localStorage.getItem("jwt");
+      userApi
+        .checkToken(jwt)
         .then(() => {
           setLoggedIn(true);
-          navigate(path, {replace: true});
+          navigate(path, { replace: true });
         })
         .catch((err) => {
           console.log(err);
-        })
+        });
     }
-  }
+  };
 
   useEffect(() => {
     handleCheckToken();
@@ -105,29 +138,53 @@ const AppRouter = () => {
     setLoggedIn(false);
     localStorage.clear();
     dispatch(logout());
-  }
+  };
 
   const handleClick = () => {
     setLoading(true);
 
     setTimeout(() => {
       setLoading(false);
-      navigate('/schedule', { state: { showPopup: true } });
+      navigate("/schedule", { state: { showPopup: true } });
     }, 4000);
   };
 
+  const getRandomSubject = () => {
+    const chance = Math.random();
+    return chance < 0.4 ? '' : subjects[Math.floor(Math.random() * subjects.length)];
+  };
+
+  const getRandomRoom = () => {
+    return rooms[Math.floor(Math.random() * rooms.length)];
+  };
+
   useEffect(() => {
-    if (location.pathname === '/schedule' && location.state?.showPopup) {
-      setIsTextPopup('Вы успешно сгенерировали расписание');
+    if (location.pathname === "/schedule" && location.state?.showPopup) {
+      setIsTextPopup("Вы успешно сгенерировали расписание");
       setLogoPopup(complete);
       setIsPopup(true);
+
+      const newTableData: string[][] = [];
+
+      for (let i = 0; i < 4; i++) {
+        const row: string[] = [];
+        for (let j = 0; j < 5; j++) {
+          const subject = getRandomSubject();
+          const room = subject ? getRandomRoom() : '';
+          row.push(subject ? `${subject}\n${room}` : '');
+        }
+        newTableData.push(row);
+      }
+
+      setTableData(newTableData);
+      setIsScheduleGenerated(true);
       window.history.replaceState({}, document.title);
     }
   }, [location]);
 
   return (
     <>
-      <NavMenu
+      <NavMenu 
         isOpen={isOpenNav}
         isClose={handleCloseNav}
         isOut={handleExit}
@@ -139,60 +196,78 @@ const AppRouter = () => {
         title={isTextPopup}
       />
       <Routes>
-        <Route path='/' element={
-          <>
-            <Header
-              isOpen={handleOpenNav}
-              isLogged={loggedIn}
-              exit={handleExit}
-            />
-            <Main />
-          </>
-        } />
-        <Route path='/signin' element={
-          loggedIn ? <Navigate to='/' replace /> :
-          <Login 
-            handleLogin={handleLogin}
-          />
-        } />
-        <Route path='/signup' element={
-          loggedIn ? <Navigate to='/' replace /> :
-          <Register
-            handleRegister={handleRegistration}
-          />
-        } />
-        <Route path='/schedule' element={
-          <>
-            <Header
-              isOpen={handleOpenNav}
-              isLogged={loggedIn}
-              exit={handleExit}
-            />
-            <ProtectedRoute 
-              element={<Schedule />}
-              loggedIn={loggedIn}
-            />
-          </>
-        } />
-        <Route path='/settings' element={
-          <>
-            <Header
-              isOpen={handleOpenNav}
-              isLogged={loggedIn}
-              exit={handleExit}
-            />
-            <ProtectedRoute 
-              element={<Settings
-                loading={loading}
-                handleClick={handleClick}
-              />}
-              loggedIn={loggedIn}
-            />
-          </>
-        } />
+        <Route
+          path="/"
+          element={
+            <>
+              <Header
+                isOpen={handleOpenNav}
+                isLogged={loggedIn}
+                exit={handleExit}
+              />
+              <Main />
+            </>
+          }
+        />
+        <Route
+          path="/signin"
+          element={
+            loggedIn ? (
+              <Navigate to="/" replace />
+            ) : (
+              <Login handleLogin={handleLogin} />
+            )
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            loggedIn ? (
+              <Navigate to="/" replace />
+            ) : (
+              <Register handleRegister={handleRegistration} />
+            )
+          }
+        />
+        <Route
+          path="/schedule"
+          element={
+            <>
+              <Header
+                isOpen={handleOpenNav}
+                isLogged={loggedIn}
+                exit={handleExit}
+              />
+              <ProtectedRoute element={
+                <Schedule 
+                  tableData={tableData}
+                  isScheduleGenerated={isScheduleGenerated}
+                />
+              } loggedIn={loggedIn} />
+            </>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <>
+              <Header
+                isOpen={handleOpenNav}
+                isLogged={loggedIn}
+                exit={handleExit}
+              />
+              <ProtectedRoute
+                element={
+                  <Settings loading={loading} handleClick={handleClick} />
+                }
+                loggedIn={loggedIn}
+              />
+            </>
+          }
+        />
       </Routes>
     </>
-  )
-}
+  );
+};
 
 export default AppRouter;
